@@ -112,17 +112,18 @@
             <div class="alert alert-warning">
                 {{ session('warning') }}
             </div>
-            @elseif(session('success'))
-            <div class="alert alert-warning">
-                {{ session('success') }}
-            </div>
             @elseif(session('error'))
             <div class="alert alert-danger">
                 {{ session('error') }}
             </div>
+            @elseif(isset($successMessage))
+            <div class="alert alert-success">
+                {{ $successMessage }}
+            </div>
             @endif
         </div>
 
+        @if(isset($successMessage))
         <div class="row mb-5">
             @foreach ($prods as $prod)
 
@@ -143,6 +144,7 @@
             @endforeach
         </div>
         {{ $prods->links('pagination::bootstrap-5') }}
+        @endif
     </div>
     </div>
 

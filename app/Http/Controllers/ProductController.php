@@ -71,7 +71,7 @@ class ProductController extends Controller
 
 
                 $filteredProds = $filteredProds
-                ->whereRaw('prezzo - (prezzo * COALESCE(sconto, 0) / 100)'. ($field == 'prezzoMin' ? '>=' : '<=') . ' ?',  (int) $value);
+                    ->whereRaw('prezzo - (prezzo * COALESCE(sconto, 0) / 100)' . ($field == 'prezzoMin' ? '>=' : '<=') . ' ?', (int) $value);
             }
 
             $fields->{$field} = $value;
@@ -84,7 +84,8 @@ class ProductController extends Controller
         }
 
 
-        return view('products.cerca', compact('prods', 'cats', 'fields'));
+        $successMessage = $prods->total() . ' prodotti trovati';
+        return view('products.cerca', compact('prods', 'cats', 'fields', 'successMessage'));
     }
 
     public function resetFilters()
