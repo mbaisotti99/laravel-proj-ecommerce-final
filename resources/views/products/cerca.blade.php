@@ -44,8 +44,14 @@
                                 </div>
 
                                 <div class="input-group-text p-0">
-                                    <input type="number" name="prezzoMin" id="prezzoMin" class="form-control nonTondo" value="{{ isset($fields->prezzoMin) ? $fields->prezzoMin : '' }} }}"
-                                        placeholder="Prezzo minimo" {{isset($fields->prezzoMin) ? '' : 'disabled'}}>
+                                    <input 
+                                    type="number" 
+                                    name="prezzoMin" 
+                                    id="prezzoMin" 
+                                    class="form-control nonTondo" 
+                                    value="{{ isset($fields->prezzoMin) ? $fields->prezzoMin : '' }}"  
+                                    placeholder="Prezzo minimo" 
+                                        {{isset($fields->prezzoMin) ? '' : 'disabled'}}>
                                 </div>
                                 <div class="input-group-text p-0">
                                     <input 
@@ -101,7 +107,7 @@
             </form>
         </div>
 
-        <div class="my-5">
+        <div class="my-5 text-center">
             @if (session('warning'))
             <div class="alert alert-warning">
                 {{ session('warning') }}
@@ -111,7 +117,7 @@
                 {{ session('success') }}
             </div>
             @elseif(session('error'))
-            <div class="alert alert-warning">
+            <div class="alert alert-danger">
                 {{ session('error') }}
             </div>
             @endif
