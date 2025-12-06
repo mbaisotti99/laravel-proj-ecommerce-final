@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Categorie;
 use App\Models\Product;
 use App\Models\Review;
 use Illuminate\Http\Request;
@@ -43,6 +44,13 @@ class MainControler extends Controller
 
 
         return view("home", compact("bestProds", "discountedProds"));
+    }
+
+    public function cerca(){
+        $prods = Product::paginate(10);
+        $cats = Categorie::cases();
+
+        return view('products.cerca', compact('prods', 'cats'));
     }
 
     public function contacts()

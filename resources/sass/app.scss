@@ -345,6 +345,20 @@ footer {
     font-weight: bold !important;
 }
 
+// Ricerca
+
+.dxTondo{
+    border-radius: 5px 0px 0 5px !important;    
+}
+
+.sxTondo{
+    border-radius: 0px 5px 5px 0px !important;    
+}
+
+.nonTondo{
+    border-radius: 0px !important;
+}
+
 
 @media screen and (max-width: 786px) {
     .desktopNav {
@@ -453,6 +467,8 @@ footer {
     
 
 }
+
+
 
 @media screen and (min-width: 1200px) {
     .qty{

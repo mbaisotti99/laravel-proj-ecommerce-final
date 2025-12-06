@@ -52,6 +52,11 @@
                 </ul>
             </li>
             <li>
+                <a href="{{ route("cerca") }}" class="navLink">
+                    Ricerca prodotti
+                </a>
+            </li>
+            <li>
                 <a href="{{ route("products.discounted") }}" class="navLink">
                     Occasioni
                 </a>

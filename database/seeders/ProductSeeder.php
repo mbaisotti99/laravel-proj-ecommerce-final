@@ -17,7 +17,7 @@ class ProductSeeder extends Seeder
     {
         $cats = Categorie::cases();
         
-        for ($i = 0; $i < 50; $i++){
+        for ($i = 0; $i < 30; $i++){
             
             $newProd = New Product();
             $newProd->nome = $faker->word();
