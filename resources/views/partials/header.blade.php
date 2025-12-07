@@ -1,3 +1,9 @@
+<?php
+if (Auth::check() && Auth::user()->order) {
+    $cartBadgeCount = Auth::user()->order->products->count();
+}
+?>
+
 <header>
 
     <nav>
@@ -97,7 +103,13 @@
                 </a>
             </li>
             <li>
-                <a href="{{route("user.cart")}}">
+                <a href="{{route("user.cart")}}" class="position-relative">
+                    @if(isset($cartBadgeCount) && $cartBadgeCount > 0)
+                    <span class="position-absolute start-100 translate-middle badge rounded-pill bg-danger" style="top:20px">
+                        {{$cartBadgeCount}}
+                        <span class="visually-hidden">prodotti nel carrello</span>
+                    </span>
+                    @endif
                     <i class="bi bi-cart2"></i>
                 </a>
             </li>

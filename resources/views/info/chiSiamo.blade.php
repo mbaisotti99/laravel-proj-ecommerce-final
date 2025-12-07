@@ -8,7 +8,7 @@
                     <img src="{{ asset("storage/loading.gif") }}" data-src="{{ asset("storage/storage.avif") }}"
                         alt="storage" width="100%" class="lazy-load">
                 </div>
-                <div class="col-6 justify-content-center d-flex flex-column h-100">
+                <div class="col-6 justify-content-center d-flex flex-column h-100"  style="min-height: 360px;">
                     <h2>Chi siamo?</h2>
                     <p>
                         Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat labore porro nostrum. Sit maxime
