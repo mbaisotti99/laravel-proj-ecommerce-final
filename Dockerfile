@@ -21,8 +21,9 @@ ENV WEB_DOCUMENT_ROOT=/app/public
 RUN php artisan storage:link
 
 # Permessi
-# RUN chown -R application:application /app/storage /app/bootstrap/cache
-RUN chown -R www-data:www-data /app/storage /app/bootstrap/cache
+RUN chown -R application:application /app/storage /app/bootstrap/cache
+
+# RUN chown -R www-data:www-data /app/storage /app/bootstrap/cache
 
 EXPOSE 80
 
