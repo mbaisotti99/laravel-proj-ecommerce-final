@@ -7,7 +7,7 @@ RUN curl -fsSL https://deb.nodesource.com/setup_20.x | bash - \
     && apt-get install -y nodejs
 
 # Copia il progetto
-COPY . .
+COPY . /app
 
 # Installa dipendenze PHP
 RUN composer install --no-dev --optimize-autoloader
@@ -19,7 +19,8 @@ RUN npm install && npm run build
 RUN php artisan storage:link
 
 # Permessi
-RUN chown -R application:application /app/storage /app/bootstrap/cache
+# RUN chown -R application:application /app/storage /app/bootstrap/cache
+RUN chown -R www-data:www-data /app/storage /app/bootstrap/cache
 
 EXPOSE 80
 
