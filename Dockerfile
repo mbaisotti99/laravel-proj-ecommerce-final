@@ -15,6 +15,8 @@ RUN composer install --no-dev --optimize-autoloader
 # Installa dipendenze JS e build
 RUN npm install && npm run build
 
+ENV WEB_DOCUMENT_ROOT=/app/public
+
 # Storage link
 RUN php artisan storage:link
 
