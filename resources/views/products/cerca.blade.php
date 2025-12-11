@@ -20,11 +20,11 @@
                 <form class="card-content" method="POST" action="{{route('products.filterBySearch')}}">
                     @csrf
                     <div class="card-body row">
-                        <div class="col-6 py-3 mb-4">
+                        <div class="col-md-6 col-sm-12 col-lg-4 py-3 mb-4">
                             <label for="nome" class="form-check-label">Nome:</label>
                             <input type="text" value="{{ isset($fields->nome) ? $fields->nome : "" }}" name="nome" class="form-control" id="nome">
                         </div>
-                        <div class="col-6 py-3 mb-4">
+                        <div class="col-md-6 col-sm-12 col-lg-4 py-3 mb-4">
                             <label for="categoria" class="form-check-label">Categoria:</label>
                             <select name="categoria" id="categoria" class="form-select">
                                 <option {{ isset($fields->categoria) && $fields->categoria == 'all' ? 'selected' : "" }} value="all">Tutte</option>
@@ -33,9 +33,9 @@
                                 @endforeach
                             </select>
                         </div>
-                        <div class="col-6 py-3 mb-4">
+                        <div class="col-md-8 col-sm-12 col-lg-6 py-3 mb-4">
                             <label for="prezzoRange" class="form-label">Range di prezzo:</label>
-                            <div class="input-group">
+                            <div class="input-group d-flex flex-nowrap">
                                 <div class="input-group-text p-0">
                                     <input type="checkbox" class="btn-check h-100" id="toggleMin" autocomplete="off" name="toggleMin"
                                         onclick="toggle('prezzoMin')" 
@@ -75,7 +75,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-6 py-3 mb-4 row">
+                        <div class="col-md-6 col-sm-12 col-lg-4 py-3 mb-4 row">
                             @foreach ($taglie as $taglia)
                                 <div class="col-3 p-2">
                                     <label class="form-check-label">
@@ -86,13 +86,13 @@
                                 </div>
                             @endforeach
                         </div>
-                        <div class="col-6 d-flex justify-content-center">
+                        <div class="col-md-6 d-flex justify-content-center">
                             <div class="form-check form-switch d-flex flex-column align-items-center">
                                 <label class="form-check-label" for="scontato">Prodotti scontati</label>
                                 <input class="form-check-input" type="checkbox" role="switch" id="scontato" name="scontato" {{ isset($fields->scontato) ? 'checked' : '' }}>
                             </div>
                         </div>
-                        <div class="col-6 d-flex justify-content-center gap-4">
+                        <div class="col-md-6 d-flex justify-content-center gap-4">
                             <button class="btn btn-secondary d-flex gap-2 align-items-center" type="submit">Cerca <i
                                     class="bi bi-search fs-6"></i>
                             </button>
