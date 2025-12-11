@@ -13,7 +13,7 @@ COPY . /app
 RUN cp -R /app/storage/app/public /app/public/storage
 
 # Installa dipendenze PHP
-RUN composer install --no-dev --optimize-autoloader
+RUN composer install --optimize-autoloader
 
 # Installa dipendenze JS e build
 RUN npm install && npm run build
