@@ -20,7 +20,7 @@ return new class extends Migration
             $table->foreignId("ship_id");
             $table->decimal("costo", 8, 2);
             $table->string("status");
-            $table->longText("note")->default("")->nullable();
+            $table->longText("note")->nullable();
             $table->string("coupon")->nullable();
             $table->timestamps();
         });
