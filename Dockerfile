@@ -26,8 +26,8 @@ RUN php artisan storage:link
 # Permessi
 RUN chown -R application:application /app/storage /app/bootstrap/cache
 
-RUN chmod +x entrypoint.sh
+# RUN chmod +x entrypoint.sh
 
 EXPOSE 80
 
-CMD ./entrypoint.sh
+CMD php artisan migrate --force && php artisan db:seed --force && exec supervisord
