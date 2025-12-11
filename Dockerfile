@@ -26,6 +26,7 @@ RUN php artisan storage:link
 # Permessi
 RUN chown -R application:application /app/storage /app/bootstrap/cache
 
+RUN chmod +x entrypoint.sh
 
 EXPOSE 80
 
