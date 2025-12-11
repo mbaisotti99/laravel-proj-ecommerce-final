@@ -30,5 +30,4 @@ RUN chmod +x entrypoint.sh
 
 EXPOSE 80
 
-# CMD ./entrypoint.sh
-CMD supervisord
+CMD ./entrypoint.sh
