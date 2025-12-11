@@ -30,6 +30,7 @@ if (Auth::check() && Auth::user()->order) {
                     </li>
 
                     <li><a class="dropdown-item" href="{{ route("products.discounted") }}">Occasioni</a></li>
+                    <li><a class="dropdown-item" href="{{ route("cerca") }}">Ricerca Prodotti</a></li>
                     <li><a class="dropdown-item" href="{{route("chiSiamo")}}">Chi siamo</a></li>
                     <li><a class="dropdown-item" href="{{route("contatti")}}">Contatti</a></li>
                 </ul>
