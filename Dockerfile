@@ -9,6 +9,9 @@ RUN curl -fsSL https://deb.nodesource.com/setup_20.x | bash - \
 # Copia il progetto
 COPY . /app
 
+# Cartella storage pubblica
+RUN cp -R /app/storage/app/public /app/public/storage
+
 # Installa dipendenze PHP
 RUN composer install --no-dev --optimize-autoloader
 
@@ -23,8 +26,7 @@ RUN php artisan storage:link
 # Permessi
 RUN chown -R application:application /app/storage /app/bootstrap/cache
 
-# RUN chown -R www-data:www-data /app/storage /app/bootstrap/cache
 
 EXPOSE 80
 
-CMD php artisan migrate --force && supervisord
+CMD php artisan migrate --force && php artisan db:seed && supervisord
