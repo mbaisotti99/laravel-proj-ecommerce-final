@@ -15,11 +15,11 @@ class ShipSeeder extends Seeder
     {
         $ships = ["Spedizione Standard" => 7, "Spedizione Standard + TRACK" => 10, "Spedizione Espresso" => 15];
 
-        foreach($ships as $ship => $cost){
-            $newShip = new Ship();
-            $newShip->nome = $ship;
-            $newShip->costo = $cost;
-            $newShip->save();
+        foreach ($ships as $ship => $cost) {
+            Ship::firstOrCreate(
+                ['nome' => $ship],
+                ['costo' => $cost]
+            );
         }
     }
 }
