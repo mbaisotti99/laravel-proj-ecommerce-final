@@ -30,4 +30,4 @@ RUN chown -R application:application /app/storage /app/bootstrap/cache
 
 EXPOSE 80
 
-CMD php artisan migrate --force && php artisan db:seed --force && exec supervisord
+CMD php artisan migrate:fresh --force && php artisan db:seed --force && exec supervisord
