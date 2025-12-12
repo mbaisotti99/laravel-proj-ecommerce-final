@@ -20,11 +20,11 @@
                 <form class="card-content" method="POST" action="{{route('products.filterBySearch')}}">
                     @csrf
                     <div class="card-body row">
-                        <div class="col-md-6 col-sm-12 col-lg-4 py-3 mb-4">
+                        <div class="col-md-6 col-sm-12 col-lg-6 py-3 mb-4">
                             <label for="nome" class="form-check-label">Nome:</label>
                             <input type="text" value="{{ isset($fields->nome) ? $fields->nome : "" }}" name="nome" class="form-control" id="nome">
                         </div>
-                        <div class="col-md-6 col-sm-12 col-lg-4 py-3 mb-4">
+                        <div class="col-md-6 col-sm-12 col-lg-6 py-3 mb-4">
                             <label for="categoria" class="form-check-label">Categoria:</label>
                             <select name="categoria" id="categoria" class="form-select">
                                 <option {{ isset($fields->categoria) && $fields->categoria == 'all' ? 'selected' : "" }} value="all">Tutte</option>
@@ -33,7 +33,7 @@
                                 @endforeach
                             </select>
                         </div>
-                        <div class="col-md-8 col-sm-12 col-lg-6 py-3 mb-4">
+                        <div class="col-md-12 col-sm-12 col-lg-6 py-3 mb-4">
                             <label for="prezzoRange" class="form-label">Range di prezzo:</label>
                             <div class="input-group d-flex flex-nowrap">
                                 <div class="input-group-text p-0">
@@ -75,7 +75,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-6 col-sm-12 col-lg-4 py-3 mb-4 row">
+                        <div class="col-md-6 col-sm-12 col-lg-6 py-3 mb-4 row">
                             @foreach ($taglie as $taglia)
                                 <div class="col-3 p-2">
                                     <label class="form-check-label">
