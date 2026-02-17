@@ -33,7 +33,7 @@ return [
             'driver' => 'mongodb',
             'dsn' => env('MONGODB_URI', 'mongodb+srv://matteobaisotti_db_user:<db_password>@portfolio.criwvxk.mongodb.net'),
             'username' => env('DB_USERNAME', 'root'),
-            'port' => env('DB_PORT', '3306'),
+            'port' => env('DB_PORT', '5000'),
             'database' => env('DB_DATABASE', 'PortFolio'),
             'password' => env('DB_PASSWORD', ''),
             'charset' => env('DB_CHARSET', 'utf8mb4'),
