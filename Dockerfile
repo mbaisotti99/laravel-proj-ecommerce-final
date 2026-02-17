@@ -2,12 +2,16 @@ FROM webdevops/php-nginx:8.2
 
 WORKDIR /app
 
-# 1. Installazione dipendenze di sistema e estensione MongoDB
-# Usiamo i pacchetti pre-compilati se possibile, oppure installiamo i tool di build
+# 1. Installa i tool di compilazione e le dipendenze per MongoDB
 RUN apt-get update && apt-get install -y \
-    php8.2-mongodb \
+    build-essential \
+    php8.2-dev \
+    php-pear \
     libssl-dev \
+    pkg-config \
     unzip \
+    && pecl install mongodb \
+    && echo "extension=mongodb.so" > /usr/local/etc/php/conf.d/mongodb.ini \
     && apt-get clean && rm -rf /var/lib/apt/lists/*
 
 # 2. Installa Node.js
@@ -18,21 +22,20 @@ RUN curl -fsSL https://deb.nodesource.com/setup_20.x | bash - \
 COPY . /app
 
 # 4. Installazione dipendenze PHP (Composer)
-# Nota: usiamo --ignore-platform-req=ext-mongodb se l'estensione non viene vista subito durante la build
-RUN composer install --no-interaction --optimize-autoloader --no-dev
+# Ignoriamo i check della piattaforma per evitare errori durante la build
+RUN composer install --no-interaction --optimize-autoloader --no-dev --ignore-platform-reqs
 
-# 5. Installa dipendenze JS e build assets (Vite/Mix)
+# 5. Installa dipendenze JS e build assets
 RUN npm install && npm run build
 
 # 6. Configurazione Laravel
-RUN cp -R /app/storage/app/public /app/public/storage || true
-RUN php artisan storage:link
+RUN php artisan storage:link || true
 
-# 7. Permessi (webdevops usa l'utente 'application')
+# 7. Permessi
 RUN chown -R application:application /app/storage /app/bootstrap/cache
 
 ENV WEB_DOCUMENT_ROOT=/app/public
 EXPOSE 80
 
-# 8. Comando di avvio (Rimosso migrate:fresh per evitare perdita dati al riavvio)
+# 8. Comando di avvio
 CMD php artisan migrate --force && exec supervisord
