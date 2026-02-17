@@ -12,6 +12,16 @@ COPY . /app
 # Cartella storage pubblica
 RUN cp -R /app/storage/app/public /app/public/storage
 
+FROM webdevops/php-nginx:8.2
+
+WORKDIR /app
+
+# Installa dipendenze di sistema e l'estensione PHP MongoDB
+RUN apt-get update && apt-get install -y \
+    libssl-dev \
+    && pecl install mongodb \
+    && docker-php-ext-enable mongodb
+
 # Installa dipendenze PHP
 RUN composer install --optimize-autoloader
 
