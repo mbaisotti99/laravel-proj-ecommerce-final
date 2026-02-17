@@ -3,7 +3,7 @@
 namespace App\Models;
 
 use App\Categorie;
-use Illuminate\Database\Eloquent\Model;
+use MongoDB\Laravel\Eloquent\Model;
 
 class Product extends Model
 {

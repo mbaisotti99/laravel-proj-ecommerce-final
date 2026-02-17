@@ -16,8 +16,7 @@ return [
     |
     */
 
-    'default' => env('DB_CONNECTION', 'sqlite'),
-
+    'default' => env('DB_CONNECTION', 'mongodb'),
     /*
     |--------------------------------------------------------------------------
     | Database Connections
@@ -30,6 +29,16 @@ return [
     */
 
     'connections' => [
+        'mongodb' => [
+            'driver' => 'mongodb',
+            'dsn' => env('MONGODB_URI', 'mongodb+srv://matteobaisotti_db_user:<db_password>@portfolio.criwvxk.mongodb.net'),
+            'username' => env('DB_USERNAME', 'root'),
+            'port' => env('DB_PORT', '3306'),
+            'database' => env('DB_DATABASE', 'PortFolio'),
+            'password' => env('DB_PASSWORD', ''),
+            'charset' => env('DB_CHARSET', 'utf8mb4'),
+            'collation' => env('DB_COLLATION', 'utf8mb4_0900_ai_ci'),
+        ],
 
         'sqlite' => [
             'driver' => 'sqlite',
@@ -144,7 +153,7 @@ return [
 
         'options' => [
             'cluster' => env('REDIS_CLUSTER', 'redis'),
-            'prefix' => env('REDIS_PREFIX', Str::slug(env('APP_NAME', 'laravel'), '_').'_database_'),
+            'prefix' => env('REDIS_PREFIX', Str::slug(env('APP_NAME', 'laravel'), '_') . '_database_'),
         ],
 
         'default' => [
